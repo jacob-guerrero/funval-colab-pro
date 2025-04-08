@@ -1,9 +1,8 @@
-import Navbar from "./components/Navbar";
-
-function App() {
-  return <>
-    <Navbar />
-  </>;
+import React from 'react'
+export default function App() {
+  return (
+    <div>
+      
+    </div>
+  )
 }
-
-export default App;
