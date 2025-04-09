@@ -1,10 +1,8 @@
-import CategoryPage from "./components/CategoryPage";
-
+import React from 'react'
 export default function App() {
-
-
   return (
-    <CategoryPage />
-
-  );
+    <div>
+      
+    </div>
+  )
 }
