@@ -4,7 +4,7 @@ import Category from "./Category";
 import Dishes from "./Dishes";
 
 
-export default function CategoryPage() {
+export default function CategoriesPage() {
     const [categories, setCategories] = useState([]);
     const [dishes, setDishes] = useState([]);
     const [error, setError] = useState(null);

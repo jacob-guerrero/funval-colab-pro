@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function imagenPrincipal() {
+export default function ImagenPrincipal() {
     return (
             <div>
                 <div className='overflow-hidden w-full h-100'>
