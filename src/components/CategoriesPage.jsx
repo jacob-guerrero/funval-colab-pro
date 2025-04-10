@@ -1,65 +1,60 @@
-import React from 'react'
-import { useEffect, useState } from "react";
 import Category from "./Category";
 import Dishes from "./Dishes";
-
+import useData from "../hooks/useData";
+import { useState } from "react";
 
 export default function CategoriesPage() {
-    const [categories, setCategories] = useState([]);
-    const [dishes, setDishes] = useState([]);
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
-  
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-         
-          const resCategories = await fetch("https://www.themealdb.com/api/json/v1/1/categories.php");
-          const dataCategories = await resCategories.json();
-  
-          
-          const resDishes = await fetch("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood");
-          const dataDishes = await resDishes.json();
-  
-          if (dataCategories.categories && dataDishes.meals) {
-            setCategories(dataCategories.categories);
-            setDishes(dataDishes.meals.slice(0, 14));
-          } else {
-            setError("No se pudieron obtener los datos.");
-          }
-        } catch (err) {
-          setError("Error al cargar los datos.");
-          console.error("Error:", err);
-        } finally {
-          setLoading(false);
-        }
-      };
-  
-      fetchData();
-    }, []);
+  const [selectedCategory, setSelectedCategory] = useState("Seafood");
+  const [view, setView] = useState("categories");
 
+  const {
+    response: dishesResponse,
+    loading,
+    error,
+  } = useData(
+    view === "dishes"
+      ? `https://www.themealdb.com/api/json/v1/1/filter.php?c=${selectedCategory}`
+      : null
+  );
+
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+    setView("dishes");
+  };
+
+  const dishes = dishesResponse?.meals || [];
 
   return (
-    <div className="bg-white text-slate-900 font-[Open_Sans] min-h-screen">
-      <div className="max-w-screen-xl mx-auto px-4 py-8">
-        {/* Sección Categorías */}
-        <section className="mb-12">
-          <h2 className="text-center text-3xl font-[Lobster] mb-8">Categorías</h2>
-          {error ? (
-            <p className="text-center text-red-500">{error}</p>
-          ) : loading ? (
-            <p className="text-center text-gray-500">Cargando datos...</p>
-          ) : (
-            <Category comidas={categories} />
-          )}
-        </section>
+    <div className="max-w-screen-xl mx-auto px-4 py-8">
+      {view === "categories" && (
+        <>
+          <h2 className="text-2xl font-bold text-center mb-6">Categorías</h2>
+          <Category onSelectCategory={handleCategorySelect} />
+        </>
+      )}
 
-        {/* Sección Platos */}
-        <section>
-          <h2 className="text-center text-2xl font-semibold mb-6">Platos</h2>
-          <Dishes comidas={dishes} />
-        </section>
-      </div>
+      {view === "dishes" && (
+        <>
+          <button
+            onClick={() => setView("categories")}
+            className="mb-4 bg-emerald-500 text-white px-4 py-2 rounded hover:bg-emerald-600"
+          >
+            Volver a Categorías
+          </button>
+
+          <h2 className="text-2xl font-bold text-center mb-6">
+            Platos de {selectedCategory}
+          </h2>
+
+          {loading ? (
+            <p className="text-center">Cargando platos...</p>
+          ) : error ? (
+            <p className="text-center text-red-500">Error: {error}</p>
+          ) : (
+            <Dishes comidas={dishes} />
+          )}
+        </>
+      )}
     </div>
-  )
+  );
 }
