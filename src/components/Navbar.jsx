@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export default function Navbar() {
   return (
     <header className="px-2 py-3 bg-emerald-700 text-white flex justify-center">
@@ -22,12 +24,12 @@ export default function Navbar() {
         </form>
 
         <div className="flex gap-2 justify-end">
-          <a href="#" className="font-semibold ">
+          <Link to="/" className="font-semibold">
             Home
-          </a>
-          <a href="#" className="font-semibold ">
+          </Link>
+          <Link to="categories" className="font-semibold">
             Categories
-          </a>
+          </Link>
         </div>
       </nav>
     </header>
