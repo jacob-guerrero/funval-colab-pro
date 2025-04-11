@@ -4,7 +4,10 @@ export default function Navbar() {
   return (
     <header className="px-2 py-3 bg-emerald-700 text-white flex justify-center">
       <nav className="w-full max-w-screen-lg flex items-center justify-between gap-2">
-        <p className="text-lg font-bold">Comidex</p>
+        <div className="flex gap-2 items-center justify-center">
+          <img src="/logo.png" alt="logo" className="w-8" />
+          <p className="text-lg font-bold">Comidex</p>
+        </div>
 
         <form className="hidden md:flex justify-center items-center grow-1">
           <input
