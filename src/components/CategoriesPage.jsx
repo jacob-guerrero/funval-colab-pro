@@ -1,6 +1,7 @@
 import Category from "./Category";
 import Dishes from "./Dishes";
 import useData from "../hooks/useData";
+import { useNavigate } from "react-router";
 
 export default function CategoriesPage({
   selectedCategory,
@@ -17,6 +18,14 @@ export default function CategoriesPage({
       ? `https://www.themealdb.com/api/json/v1/1/filter.php?c=${selectedCategory}`
       : null
   );
+
+  const navigate = useNavigate();
+  
+  
+  function handleClickMeal(id){
+    console.log(id) 
+    navigate(`/meal/${id}`)   
+  }
 
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
@@ -52,7 +61,8 @@ export default function CategoriesPage({
           ) : error ? (
             <p className="text-center text-red-500">Error: {error}</p>
           ) : (
-            <Dishes comidas={dishes} />
+            <Dishes comidas={dishes}
+                  onSelectDish={handleClickMeal} />
           )}
         </>
       )}
