@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router";
 import HomePage from "./components/HomePage";
 import CategoriesPage from "./components/CategoriesPage";
 import MealPage from "./components/MealPage";
+import Search from "./components/Search";
 
 export default function App() {
   const [selectedCategory, setSelectedCategory] = useState("Seafood");
@@ -31,6 +32,7 @@ export default function App() {
         }
       />
       <Route path="meal/:id" element={<MealPage />} />
+      <Route path="search/:name" element={<Search />} />
     </Routes>
   );
 }

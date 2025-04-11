@@ -1,6 +1,18 @@
-import { Link } from "react-router";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router";
 
 export default function Navbar() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim() === "") {
+      return;
+    }
+    navigate(`search/${searchQuery.trim()}`);
+    setSearchQuery("");
+  };
+
   return (
     <header className="px-2 py-3 bg-emerald-700 text-white flex justify-center">
       <nav className="w-full max-w-screen-lg flex items-center justify-between gap-2">
@@ -9,13 +21,18 @@ export default function Navbar() {
           <p className="text-lg font-bold">Comidex</p>
         </div>
 
-        <form className="hidden md:flex justify-center items-center grow-1">
+        <form
+          className="hidden md:flex justify-center items-center grow-1"
+          onSubmit={handleSearchSubmit}
+        >
           <input
             className="w-full max-w-xs lg:max-w-sm px-2 py-1 rounded-l-md bg-white text-black"
             type="search"
             name="search"
             id="search"
             placeholder="Search..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
           <button>
             <img
