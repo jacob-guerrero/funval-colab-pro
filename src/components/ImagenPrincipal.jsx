@@ -7,6 +7,7 @@ export default function ImagenPrincipal({ handleClickRandom }) {
         <img src="comida.jpg" alt="" className="object-cover w-full h-full" />
       </div>
       <div className="px-2 py-1 w-55 shadow-md shadow-lime-600 rounded-2xl flex flex-col items-center bg-white absolute top-1/2 right-1/2 translate-x-25 md:top-1/2 md:right-25 md:translate-0 md:-translate-y-1/2">
+
         <p className="text-black rounded-md font-bold my-2">
           ¿No sabes que comer hoy?
         </p>
