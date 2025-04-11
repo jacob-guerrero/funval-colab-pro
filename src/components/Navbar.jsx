@@ -3,7 +3,7 @@ import { Link } from "react-router";
 export default function Navbar() {
   return (
     <header className="px-2 py-3 bg-emerald-700 text-white flex justify-center">
-      <nav className="w-full max-w-4xl flex items-center justify-between gap-2">
+      <nav className="w-full max-w-screen-lg flex items-center justify-between gap-2">
         <p className="text-lg font-bold">Comidex</p>
 
         <form className="hidden md:flex justify-center items-center grow-1">

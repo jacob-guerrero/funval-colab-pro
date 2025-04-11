@@ -1,20 +1,20 @@
 import React from "react";
 import ImagenPrincipal from "./ImagenPrincipal";
-import Category from "./Category";
-import useData from "../hooks/useData";
+import HomeCategories from "./HomeCategories";
+import { useNavigate } from "react-router";
 
-export default function HomePage() {
-  const { response } = useData(
-    "https://www.themealdb.com/api/json/v1/1/categories.php"
-  );
+export default function HomePage({ setSelectedCategory, setView }) {
+  const navigate = useNavigate();
 
-  console.log(response?.categories);
-  const comidas = response?.categories || [];
-
+  const handleClick = (value) => {
+    setSelectedCategory(value);
+    setView("dishes");
+    navigate(`/categories`);
+  };
   return (
-    <>
+    <div className="w-full h-[calc(100vh-52px)] flex flex-col">
       <ImagenPrincipal />
-      <Category comidas={comidas} />
-    </>
+      <HomeCategories onSelectCategory={handleClick} />
+    </div>
   );
 }
