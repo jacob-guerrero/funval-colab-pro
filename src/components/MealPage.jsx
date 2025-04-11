@@ -1,8 +1,13 @@
 import React from "react";
 import IngreInstru from "./IngreInstru";
-import ImagePlato from "./ImagePlato"
+import ImagePlato from "./ImagePlato";
 import VideoPlato from "./VideoPlato";
+import { useParams } from "react-router";
+
 export default function MealPage() {
+  const params = useParams();
+  console.log(params);
+
   return (
     <>
       <h1 className="text-3xl text-center bg-amber-100">Titulo</h1>
@@ -12,13 +17,19 @@ export default function MealPage() {
         </div>
         <div className=" m-2 md:w-1/2 shadow-md shadow-orange-300 rounded-2xl bg-amber-50 ">
           <div className="flex items-center h-70 m-2 ">
-            <ImagePlato src={"https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg"} />
-          </div >
+            <ImagePlato
+              src={
+                "https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg"
+              }
+            />
+          </div>
           <div className="flex items-center h-70 m-2 ">
-            <VideoPlato youtubeUrl={"https://www.youtube.com/watch?v=1IszT_guI08"} />
-
+            <VideoPlato
+              youtubeUrl={"https://www.youtube.com/watch?v=1IszT_guI08"}
+            />
           </div>
         </div>
       </div>
-    </>)
+    </>
+  );
 }
