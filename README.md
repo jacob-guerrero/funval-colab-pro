@@ -1,12 +1,47 @@
-# React + Vite
+# 🍽️ Comidex
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Comidex** es una aplicación web que permite descubrir recetas de cocina de manera sencilla e intuitiva. Utiliza la API pública de [TheMealDB](https://www.themealdb.com/api.php) para mostrar una amplia variedad de platos categorizados por tipo, con la posibilidad de buscar por nombre o explorar una receta al azar.
 
-Currently, two official plugins are available:
+## 🚀 Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🧭 Navegación simple con React Router.
+- 🍲 Vista detallada de cada receta con ingredientes y preparación.
+- 🔍 Búsqueda por nombre de platillo.
+- 🎲 Receta aleatoria desde la página principal.
+- 🎨 Diseño responsive con TailwindCSS.
 
-## Expanding the ESLint configuration
+## 🧱 Estructura del proyecto
+```bash
+├── public/ # Archivos públicos y assets (favicon, logo, etc.) 
+├── src/ 
+│ ├── components/ # Componentes reutilizables (Navbar, Cards, etc.) 
+│ ├── hooks/ # Custom hooks (uso de API, lógica compartida) 
+│ ├── App.jsx # Componente principal con definición de rutas 
+│ ├── main.jsx # Punto de entrada de React 
+│ └── index.css # Estilos base y configuración de Tailwind
+├── index.html
+├── README.md
+├── package.json
+```
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tecnologías utilizadas
+
+- **React**
+- **React Router**
+- **Axios** para manejo de solicitudes HTTP
+- **TailwindCSS** para estilos rápidos y responsivos
+- **TheMealDB API** como fuente de datos
+
+## 🛠️ Live Preview
+Puedes usar la aplicacion live haciendo click [aquí](https://comidex.vercel.app/)
+
+## 🤝 Créditos
+
+Desarrollado en colaboración por el equipo de Funval:
+- Adriana Aquino
+- Miguel Angel Cornejo
+- Jacob Guerrero
+
+Datos proporcionados por TheMealDB.
+##
+¡Gracias por visitar Comidex y buen provecho! 🍝
