@@ -59,7 +59,6 @@ export default function IngreInstru({ response }) {
                 </div>
             </div>
         </div>
-      </div>
-    </div>
+
   );
 }
